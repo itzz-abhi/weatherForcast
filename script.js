@@ -1,6 +1,7 @@
 const cityInput = document.querySelector('#city');
 const button = document.querySelector('#but');
 const result = document.querySelector('#result');
+const otherDiv = document.querySelector("#otherCityTable");
 
 button.addEventListener('click',function(e){
   
@@ -26,14 +27,17 @@ fetch(url,options)
 })
 .then(function(data){
     const temp = (data.main?.temp - 273.15).toFixed(2);
-  const humidity = data.main?.humidity;
+    const humidity = data.main?.humidity;
    result.innerHTML = `
-        <p>Weather in ${city}</p>
+        <p style="color:black;font-size:20px;"><big>Weather in ${city}</big></p>
         <span><strong>Temperature:</strong> ${temp} °C</span><br>
-         <span><strong>Humidity:</strong> ${humidity}</span>`
-// console.log(data);
+         <span><strong>Humidity:</strong> ${humidity}</span><br>
+         <span><strong>Visibility:</strong> ${data.visibility/1000}Km<br>
+         <span><strong>Wind Speed:</strong> ${data.wind.speed}<br>`
+  // console.log(data);
 })
 .catch(function(error){
     result.innerHTML =`<p>Error:${error.message}</p>`
 })
 })
+
