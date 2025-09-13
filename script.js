@@ -1,9 +1,9 @@
-const cityInput = document.querySelector('#city');
-const button = document.querySelector('#but');
-const result = document.querySelector('#result');
-const otherDiv = document.querySelector("#otherCityTable");
 
-button.addEventListener('click',function(e){
+document.querySelectorAll('.box').forEach(box =>{
+const cityInput = box.querySelector('#city');
+const buttonOne = box.querySelector('#buttonOne');
+const result = box.querySelector('#result');
+buttonOne.addEventListener('click',function(e){
   
   const city = cityInput.value.trim();
   if(!city){
@@ -36,8 +36,9 @@ fetch(url,options)
          <span><strong>Wind Speed:</strong> ${data.wind.speed}<br>`
   // console.log(data);
 })
-.catch(function(error){
-    result.innerHTML =`<p>Error:${error.message}</p>`
-})
-})
+    .catch(function (error) {
+      result.innerHTML = `<p>Error: ${error.message}</p>`;
+    });
+  });
+});
 
